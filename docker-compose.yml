@@ -1,0 +1,16 @@
+version: '3'
+services: 
+  container1:
+    image: drashtishah04/dockergcp
+    command: sh -c "echo 'Hello from my other container1!' && node nodejswebapp.js"
+    ports:
+      - "8000:8080"
+    expose:
+      - "8000"
+    healthcheck:
+      test: curl --fail http://localhost:8080 || exit 1
+      interval: 30s
+      timeout: 30s
+      retries: 5
+      
+    
